@@ -6,18 +6,7 @@ from attr.setters import validate
 
 def test_api_status_code():
     r = requests.get('https://dog.ceo/api/breed/hound/list/all')
-    print(r.status_code == requests.codes.ok)
-
-
-@pytest.mark.parametrize('dog', ['Affenpinscher', 'German Pointer', 'Irish Wolfhound'])
-def test_api_response_response(dog):
-    r = requests.get('https://dog.ceo/api/breed/' + dog + '/images/random')
-
-
-@pytest.mark.parametrize('baseUrl', ['https://dog.ceo/api/breeds/list/all'])
-def test_api_all(baseUrl):
-    r = requests.get(baseUrl)
-    print(r.headers)
+    assert r.status_code == requests.codes.ok
 
 
 def test_api_all_breed(base_url):

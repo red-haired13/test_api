@@ -14,13 +14,16 @@ def pytest_addoption(parser):
         help="This is the answer"
     )
 
+
 @pytest.fixture
 def base_url(request):
     return request.config.getoption("--url")
 
+
 @pytest.fixture
 def status_codes(request):
     return getattr(requests, request.config.getoption("--status_codes"))
+
 
 def test_url_status(base_url, status_codes):
     r = requests.get(base_url)
