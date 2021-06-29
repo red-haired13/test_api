@@ -6,19 +6,19 @@ import requests
 
 def test_get_resource():
     r = requests.get('https://jsonplaceholder.typicode.com/posts/1')
-    r.status_code == requests.codes.ok
+    assert r.status_code == requests.codes.ok
 
 
 @pytest.mark.parametrize('baseUrl', ['https://jsonplaceholder.typicode.com/posts'])
 def test_all_resource(baseUrl):
     r = requests.get(baseUrl)
-    r.status_code == requests.codes.ok
+    assert r.status_code == requests.codes.ok
 
 
 @pytest.mark.parametrize('baseUrl', 'idN', ['https://jsonplaceholder.typicode.com/posts/'], ['1', '2', '3'])
 def test_all_resource(baseUrl, idN):
     r = requests.get(baseUrl + idN)
-    r.status_code == requests.codes.ok
+    assert r.status_code == requests.codes.ok
 
 
 @pytest.mark.parametrize('input_id, output_id',
